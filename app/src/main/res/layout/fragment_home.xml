@@ -92,7 +92,7 @@
                 android:layout_margin="1dp"
                 android:background="@color/lime"
                 android:paddingLeft="4dp"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text=" Gold rate live"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
@@ -190,7 +190,7 @@
                 android:layout_margin="1dp"
                 android:background="@color/lime"
                 android:paddingLeft="4dp"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:text=" Silver rate live"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
@@ -262,6 +262,40 @@
                 android:textColor="#00FF00"
                 android:textStyle="bold" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="#000000">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:background="#FFFFFF"
+                android:gravity="center_vertical"
+                android:text="Mcx silver rate"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="686.00"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#FF0000"
+                android:textStyle="bold" />
+        </TableRow>
+
     </TableLayout>
 
     <TableLayout
@@ -288,7 +322,7 @@
                 android:layout_span="2"
                 android:layout_margin="1dp"
                 android:background="@color/lime"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:paddingLeft="4dp"
                 android:text=" Platinum rate live"
                 android:textAppearance="?android:attr/textAppearanceLarge"
