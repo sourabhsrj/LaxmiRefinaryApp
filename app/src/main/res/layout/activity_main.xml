@@ -24,6 +24,8 @@
             app:itemTextColor="@color/cyan"
             app:menu="@menu/bottom_nav_menu" />
 
+
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

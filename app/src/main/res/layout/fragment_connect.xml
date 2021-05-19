@@ -26,12 +26,13 @@
         android:layout_height="100dp"
         android:layout_marginTop="5dp"
         android:clickable="false"
-        android:src="@drawable/logoapp"/>
+        android:src="@drawable/logoapp"
+        android:contentDescription="@string/todo" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Laxmi Refinary"
+        android:text="@string/laxmi_refinary"
         android:clickable="false"
         android:textColor="@color/new2"
         android:layout_marginStart="110dp"
@@ -41,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="58dp"
-        android:text="Since-1999"
+        android:text="@string/since_1999"
         android:clickable="false"
         android:textColor="@color/new2"
         android:layout_marginStart="130dp"
@@ -58,11 +59,13 @@
         android:onClick="openMap"
         android:src="@drawable/address"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        tools:ignore="OnClick"
+        android:contentDescription="@string/todo" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Solapur-413001"
+        android:text="@string/solapur_413001"
         android:clickable="false"
         android:textColor="@color/new2"
         android:layout_marginTop="140dp"
@@ -85,7 +88,9 @@
         android:onClick="calling"
         android:src="@drawable/phone"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        tools:ignore="OnClick"
+        android:contentDescription="@string/todo" />
     <ImageButton
         android:id="@+id/gmail"
         android:layout_width="80dp"
@@ -98,7 +103,10 @@
         android:src="@drawable/gmail"
         android:adjustViewBounds="true"
         android:layout_toRightOf="@+id/phone"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        tools:ignore="OnClick"
+        android:contentDescription="@string/todo"
+        android:layout_toEndOf="@+id/phone" />
 
         <ImageButton
             android:id="@+id/whatsapp"
@@ -112,7 +120,10 @@
             android:onClick="openWhatsapp"
             android:background="@color/white"
             android:scaleType="centerInside"
-            android:src="@drawable/whatsapp" />
+            android:src="@drawable/whatsapp"
+            tools:ignore="OnClick"
+            android:contentDescription="@string/todo"
+            android:layout_toEndOf="@id/gmail" />
 
         <ImageButton
             android:id="@+id/twitter"
@@ -125,7 +136,9 @@
             android:onClick="openTwitter"
             android:background="@color/white"
             android:scaleType="centerInside"
-            android:src="@drawable/twitter" />
+            android:src="@drawable/twitter"
+            tools:ignore="OnClick"
+            android:contentDescription="@string/todo" />
     <ImageButton
         android:id="@+id/facebook"
         android:background="@color/white"
@@ -138,7 +151,10 @@
         android:onClick="openFacebook"
         android:src="@drawable/facebook"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        tools:ignore="OnClick"
+        android:contentDescription="@string/todo"
+        android:layout_toEndOf="@id/twitter" />
     <ImageButton
         android:id="@+id/instagram"
         android:layout_width="80dp"
@@ -151,7 +167,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        tools:ignore="OnClick"
+        android:contentDescription="@string/todo"
+        android:layout_toEndOf="@id/facebook" />
     </RelativeLayout>
     <!--<ImageView
         android:layout_width="match_parent"
