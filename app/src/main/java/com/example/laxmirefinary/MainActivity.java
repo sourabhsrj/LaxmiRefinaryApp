@@ -13,24 +13,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottomnavapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
-
-    public MainActivity() {
-        navigationItemSelectedListener = item -> {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    openFragment(HomeFragment.newInstance("", ""));
-                    return true;
-                case R.id.navigation_connect:
-                    openFragment(ConnectFragment.newInstance("", ""));
-                    return true;
-            }
-            return false;
-        };
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +31,22 @@ public class MainActivity extends AppCompatActivity {
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(null);
         transaction.commit();
     }
     @SuppressLint("NonConstantResourceId")
-    OnNavigationItemSelectedListener navigationItemSelectedListener;
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+            item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        openFragment(HomeFragment.newInstance("", ""));
+                        return true;
+                    case R.id.navigation_connect:
+                        openFragment(ConnectFragment.newInstance("", ""));
+                        return true;
+                }
+                return false;
+            };
 
     public void calling(View view) {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);

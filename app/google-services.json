@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "419103479550",
+    "firebase_url": "https://laxmisilver-f957e-default-rtdb.firebaseio.com",
+    "project_id": "laxmisilver-f957e",
+    "storage_bucket": "laxmisilver-f957e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419103479550:android:3485d8b3c116ebfbcbf7af",
+        "android_client_info": {
+          "package_name": "com.example.bottomnavapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419103479550-5tcd4eiaksbjfejmgdcpntg7ctre82ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5Bz4bKo8ri1SLB7sDChzxxpVNF_p49mE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419103479550-5tcd4eiaksbjfejmgdcpntg7ctre82ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
