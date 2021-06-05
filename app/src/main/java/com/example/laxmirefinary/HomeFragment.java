@@ -1,8 +1,6 @@
 package com.example.laxmirefinary;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +21,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,7 +83,7 @@ public class HomeFragment extends Fragment {
 
 
         }catch (Exception ex){
-
+            ex.printStackTrace();
         }
     }
 
@@ -99,13 +98,15 @@ public class HomeFragment extends Fragment {
     }
 
 
-//    @SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Integer, String, Boolean> {
 
+        public Content() {
+        }
 
 
 
-    @Override
+        @Override
         protected void onPreExecute() {
             super.onPreExecute();
         //            progressDialog = new ProgressDialog(getActivity());
@@ -124,85 +125,25 @@ public class HomeFragment extends Fragment {
         protected Boolean doInBackground(Integer... integers) {
 
 
-      /*      final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    handler.postDelayed(this, 5000);
-                }
-            }, 5000);
 
-            try {*/
-//                final Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-
-            goldMcx = Math.round(getGoldData());
-                    goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
-
-
-                    silverMcx = Math.round(getSilverData());
-                    silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
-                    silverMumbai = silverSolapur - 500;
-                    silverKolhapur = silverSolapur - 1100;
-                    silverHydrabad = silverSolapur;
-
-
-//                    @Override
-//                    public void run() {
                         try{
 
-//                goldMcxTextView =  getView().findViewById(R.id.goldmcx);
-//
-//                 blink_anim = AnimationUtils.loadAnimation(getContext(),R.anim.blink);
-//                goldMcxTextView.startAnimation(blink_anim);
-//
-//                goldSolapurTextView =  getView().findViewById(R.id.goldsolapur);
-//                upperGoldSolapurTextView =  getView().findViewById(R.id.uppergoldsolapur);
-//
-//                silverMcxTextView =  getView().findViewById(R.id.silvermcx);
-//                silverSolapurTextView =  getView().findViewById(R.id.silversoplapur);
-//
-//                upperSilverSolapurTextView = getView().findViewById(R.id.uppersilversoplapur);
-//                silverHydrabadTextView = getView().findViewById(R.id.silverhydrabad);
-//                silverMumbaiTextView =  getView().findViewById(R.id.silvermumbai);
-//                silverKolhapurTextView =  getView().findViewById(R.id.silverkolhapur);
 
-//                if (goldMcx != null) {
-//                    goldMcxTextView.setText("Rs " + goldMcx.toString());
-//                    goldSolapurTextView.setText("Rs " + goldSolapur.toString());
-//                    upperGoldSolapur = "Gold" + "\n" + goldSolapur.toString() + "\n" + "13.15(0.75%)";
-//                    upperGoldSolapurTextView.setText(upperGoldSolapur);
-//                } else {
-//                    goldMcxTextView.setText("No Value");
-//                }
-//                if (silverMcx != null) {
-//                    String upperSilverSolapur = "Silver" + "\n" + silverSolapur.toString() + "\n" + "0.103(0.4%)";
-//                    upperSilverSolapurTextView.setText(upperSilverSolapur);
-//                    silverMcxTextView.setText("Rs " + silverMcx.toString());
-//                    silverHydrabadTextView.setText("Rs " + silverHydrabad.toString());
-//                    silverMumbaiTextView.setText("Rs " + silverMumbai.toString());
-//                    silverKolhapurTextView.setText("Rs " + silverKolhapur.toString());
-//                    silverSolapurTextView.setText("Rs " + silverSolapur.toString());
-//
-//                } else {
-//                    silverMcxTextView.setText("No Value");
-//                }
+
+                            goldMcx = Math.round(getGoldData());
+                            goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
+
+
+                            silverMcx = Math.round(getSilverData());
+                            silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
+                            silverMumbai = silverSolapur - 500;
+                            silverKolhapur = silverSolapur - 1100;
+                            silverHydrabad = silverSolapur;
                         }catch(Exception ex) {
-
+                            ex.printStackTrace();
                         }
 
-//
-//                            handler.postDelayed(this, 5000);
-//
-//                    }
-//                }, 10000);
-//
 
-
-//            }catch (Exception ex){
-//
-//            }
-//            }
             return null;
         }
 
@@ -211,11 +152,12 @@ public class HomeFragment extends Fragment {
 
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void run() {
                     try{
 
-                        goldMcxTextView =  getView().findViewById(R.id.goldmcx);
+                        goldMcxTextView =  Objects.requireNonNull(getView()).findViewById(R.id.goldmcx);
 
                         blink_anim = AnimationUtils.loadAnimation(getContext(),R.anim.blink);
                         goldMcxTextView.startAnimation(blink_anim);
@@ -255,6 +197,7 @@ public class HomeFragment extends Fragment {
 
                     handler.postDelayed(this, 3000);
                     }catch(Exception ex) {
+
                         ex.printStackTrace();
                     }
                 }
@@ -274,14 +217,9 @@ public class HomeFragment extends Fragment {
 
 
         Double price = null;
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(HomeFragment.GOLDURL).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // parseItems.add(new ParseItem(d));
-
 
         Elements tables = doc.getElementsByClass("ML7 MR7 PT5 PB5 brdb");
         Element table1 = tables.get(0);
@@ -298,9 +236,13 @@ public class HomeFragment extends Fragment {
 
 
         Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
-        Matcher matcher = regex.matcher(tdr);
-        while (matcher.find()) {
-            price = Double.parseDouble(matcher.group(1));
+        Matcher matcher;
+            matcher = regex.matcher(tdr);
+            while (matcher.find()) {
+            price = Double.parseDouble(Objects.requireNonNull(matcher.group(1)));
+        }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return price;
     }
@@ -309,12 +251,10 @@ public class HomeFragment extends Fragment {
 
 
         Double price = null;
-        Document doc = null;
+        Document doc ;
         try {
             doc = Jsoup.connect(HomeFragment.SILVERURL).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
 
         Elements tables = doc.getElementsByClass("ML7 MR7 PT5 PB5 brdb");
@@ -335,8 +275,12 @@ public class HomeFragment extends Fragment {
         Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
         Matcher matcher = regex.matcher(tdr);
         while (matcher.find()) {
-            price = Double.parseDouble(matcher.group(1));
+            price = Double.parseDouble(Objects.requireNonNull(matcher.group(1)));
         }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return price;
     }
 
@@ -346,11 +290,11 @@ public class HomeFragment extends Fragment {
         return (networkInfo != null && networkInfo.isConnected());
     }*/
 
-    private boolean isOnline() {
+/*    private boolean isOnline() {
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return (networkInfo != null && networkInfo.isConnected());
-    }
+    }*/
 
 
 }
