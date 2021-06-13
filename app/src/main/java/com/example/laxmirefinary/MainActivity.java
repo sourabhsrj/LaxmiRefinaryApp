@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
     @SuppressLint("NonConstantResourceId")
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
+   final BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             item -> {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:

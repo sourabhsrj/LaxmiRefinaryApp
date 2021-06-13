@@ -11,9 +11,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bottomnavapp.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -40,11 +46,13 @@ public class HomeFragment extends Fragment {
     private String upperGoldSolapur=null;
     Animation blink_anim;
 
-//    private Long currentRate;
+    String goldSolapurChange=null;
+
+    //    private Long currentRate;
 //    private FirebaseRecyclerOptions<Metals> Metals;
 //    FirebaseDatabase firebaseDatabase;
 //    DatabaseReference databaseReference;
-    //    ProgressDialog progressDialog;
+//    ProgressDialog progressDialog;
     TextView goldMcxTextView;
     TextView goldSolapurTextView;
     TextView upperGoldSolapurTextView;
@@ -54,6 +62,10 @@ public class HomeFragment extends Fragment {
     TextView silverHydrabadTextView;
     TextView silverMumbaiTextView;
     TextView silverKolhapurTextView;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
     public HomeFragment() {
     }
 
@@ -70,12 +82,43 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        Executors.newSingleThreadExecutor().execute(() -> {
+//
+//            Handler mainHandler = new Handler(Looper.getMainLooper());
+//
+//            //sync calculations
+//
+//            mainHandler.post(() -> {
+//                //Update UI
+//            });
+//
+//            //other sync calcs.
+//
+//            mainHandler.post(() -> {
+//                //Update UI
+//            });
+//
+//        });
 
+
+
+        //-----------------------------DataBase Start----------------------------------------------------
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        Query postsQuery = FirebaseDatabase.getInstance().getReference();
+
+       FirebaseRecyclerOptions<Metals> options = new FirebaseRecyclerOptions.Builder<Metals>()
+                .setQuery(postsQuery, Metals.class)
+                .build();
+
+
+        //-----------------------------DataBase Start----------------------------------------------------
 
         try {
 
 
             final int intervalTime = 10000; // 10 sec
+
 
 
             Content content = new Content();
@@ -85,10 +128,17 @@ public class HomeFragment extends Fragment {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+
+
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Metals");
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,16 +148,21 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
+
     @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Integer, String, Boolean> {
 
-        public Content() {
-        }
 
 
 
         @Override
-        protected void onPreExecute() {
+        public void onPreExecute() {
             super.onPreExecute();
         //            progressDialog = new ProgressDialog(getActivity());
         //            progressDialog.setMessage("Loading , Please wait...");
@@ -157,7 +212,17 @@ public class HomeFragment extends Fragment {
                 public void run() {
                     try{
 
-                        goldMcxTextView =  Objects.requireNonNull(getView()).findViewById(R.id.goldmcx);
+//                        goldMcx = Math.round(getGoldData());
+//                        goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
+//
+//
+//                        silverMcx = Math.round(getSilverData());
+//                        silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
+//                        silverMumbai = silverSolapur - 500;
+//                        silverKolhapur = silverSolapur - 1100;
+//                        silverHydrabad = silverSolapur;
+
+                        goldMcxTextView =  getView().findViewById(R.id.goldmcx);
 
                         blink_anim = AnimationUtils.loadAnimation(getContext(),R.anim.blink);
                         goldMcxTextView.startAnimation(blink_anim);
@@ -201,7 +266,7 @@ public class HomeFragment extends Fragment {
                         ex.printStackTrace();
                     }
                 }
-            }, 3000);
+            }, 5000);
 
 
 
