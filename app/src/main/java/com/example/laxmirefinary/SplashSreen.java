@@ -26,7 +26,7 @@ public class SplashSreen extends AppCompatActivity {
         videoView.setOnCompletionListener(mediaPlayer -> {
             if(isFinishing())
                 return;
-            startActivity(new Intent(SplashSreen.this,MainActivity.class));
+            startActivity(new Intent(SplashSreen.this,HomeActivity.class));
             finish();
         });
         videoView.start();

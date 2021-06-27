@@ -6,6 +6,6 @@
         android:title="@string/home" />
     <item
         android:id="@+id/navigation_connect"
-        android:icon="@drawable/connect"
+        android:icon="@drawable/contact"
         android:title="@string/connect" />
 </menu>
