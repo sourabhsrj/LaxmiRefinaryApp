@@ -9,18 +9,18 @@ public class Metals {
     Long silverHydrabad;
     Long silverKolhapur;
 
-    Long goldSolapurOperator;
+    String goldSolapurOperator;
 
-    Long silverSolapurOperator;
-    Long silverMumbaiOperator;
-    Long silverHydrabadOperator;
-    Long silverKolhapurOperator;
+    String silverSolapurOperator;
+    String silverMumbaiOperator;
+    String silverHydrabadOperator;
+    String silverKolhapurOperator;
 
 
     public Metals() {
     }
 
-    public Metals(Long goldSolapur, Long silverSolapur, Long silverMumbai, Long silverHydrabad, Long silverKolhapur, Long goldSolapurOperator, Long silverSolapurOperator, Long silverMumbaiOperator, Long silverHydrabadOperator, Long silverKolhapurOperator) {
+    public Metals(Long goldSolapur, Long silverSolapur, Long silverMumbai, Long silverHydrabad, Long silverKolhapur, String goldSolapurOperator, String silverSolapurOperator, String silverMumbaiOperator, String silverHydrabadOperator, String silverKolhapurOperator) {
         this.goldSolapur = goldSolapur;
         this.silverSolapur = silverSolapur;
         this.silverMumbai = silverMumbai;
@@ -73,43 +73,43 @@ public class Metals {
         this.silverKolhapur = silverKolhapur;
     }
 
-    public Long getGoldSolapurOperator() {
+    public String getGoldSolapurOperator() {
         return goldSolapurOperator;
     }
 
-    public void setGoldSolapurOperator(Long goldSolapurOperator) {
+    public void setGoldSolapurOperator(String goldSolapurOperator) {
         this.goldSolapurOperator = goldSolapurOperator;
     }
 
-    public Long getSilverSolapurOperator() {
+    public String getSilverSolapurOperator() {
         return silverSolapurOperator;
     }
 
-    public void setSilverSolapurOperator(Long silverSolapurOperator) {
+    public void setSilverSolapurOperator(String silverSolapurOperator) {
         this.silverSolapurOperator = silverSolapurOperator;
     }
 
-    public Long getSilverMumbaiOperator() {
+    public String getSilverMumbaiOperator() {
         return silverMumbaiOperator;
     }
 
-    public void setSilverMumbaiOperator(Long silverMumbaiOperator) {
+    public void setSilverMumbaiOperator(String silverMumbaiOperator) {
         this.silverMumbaiOperator = silverMumbaiOperator;
     }
 
-    public Long getSilverHydrabadOperator() {
+    public String getSilverHydrabadOperator() {
         return silverHydrabadOperator;
     }
 
-    public void setSilverHydrabadOperator(Long silverHydrabadOperator) {
+    public void setSilverHydrabadOperator(String silverHydrabadOperator) {
         this.silverHydrabadOperator = silverHydrabadOperator;
     }
 
-    public Long getSilverKolhapurOperator() {
+    public String getSilverKolhapurOperator() {
         return silverKolhapurOperator;
     }
 
-    public void setSilverKolhapurOperator(Long silverKolhapurOperator) {
+    public void setSilverKolhapurOperator(String silverKolhapurOperator) {
         this.silverKolhapurOperator = silverKolhapurOperator;
     }
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bottomnavapp.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,7 +32,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,10 +55,7 @@ public class HomeActivity extends AppCompatActivity {
 
     String goldSolapurChange=null;
 
-    //    private Long currentRate;
-//    private FirebaseRecyclerOptions<Metals> Metals;
-//    FirebaseDatabase firebaseDatabase;
-//    DatabaseReference databaseReference;
+//        private Long currentRate;
 //    ProgressDialog progressDialog;
     TextView goldMcxTextView;
     TextView goldSolapurTextView;
@@ -64,14 +67,32 @@ public class HomeActivity extends AppCompatActivity {
     TextView silverMumbaiTextView;
     TextView silverKolhapurTextView;
 
+
+    private FirebaseRecyclerOptions<Metals> Metals;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+//    Metals metals;
+
+    Long goldSolapurDb = null;
+
+    Long silverSolapurDb = null;
+    Long silverMumbaiDb = null;
+    Long silverHydrabadDb = null;
+    Long silverKolhapurDb = null;
+
+    String goldSolapurOperatorDb = null;
+
+    String silverSolapurOperatorDb = null;
+    String silverMumbaiOperatorDb = null;
+    String silverHydrabadOperatorDb = null;
+    String silverKolhapurOperatorDb = null;
 
     Handler handler = new Handler();
     Runnable runnable;
 
-
+    private Timer mTimer;
+    private TimerTask mTimerTask;
 
     //------------------------------------
     @Override
@@ -162,24 +183,33 @@ public class HomeActivity extends AppCompatActivity {
         //----End Set values
 
         //-----------------------------DataBase Start----------------------------------------------------
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        Query postsQuery = FirebaseDatabase.getInstance().getReference();
+        // below line is used to get
+        // reference for our database.
+        databaseReference = firebaseDatabase.getReference("prices");
 
-        FirebaseRecyclerOptions<Metals> options = new FirebaseRecyclerOptions.Builder<Metals>()
-                .setQuery(postsQuery, Metals.class)
-                .build();
+      getDataFromDatabase();
 
 
-        //-----------------------------DataBase Start----------------------------------------------------
+
+
+        //-----------------------------DataBase End----------------------------------------------------
 
         try {
 
 
-            final int intervalTime = 10000; // 10 sec
-
+//            final int intervalTime = 10000; // 10 sec
+            mTimer = new Timer();
+            mTimerTask = new TimerTask() {
+                @Override
+                public void run() {
             Content content = new Content();
-            content.execute();
+            content.execute();  }
+            };
+            mTimer.schedule(mTimerTask, // Task to be executed multiple times
+                    0, // How long to delay in Milliseconds
+                    10000); // How long between iterations in Milliseconds
 
 
         }catch (Exception ex){
@@ -211,12 +241,71 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Metals");
+    private void getDataFromDatabase() {
+//        final Metals[] value = {null};
+//        final com.example.laxmirefinary.Metals[] valuess = {null};
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // this method is call to get the realtime
+                // updates in the data.
+                // this method is called when the data is
+                // changed in our Firebase console.
+                // below line is for getting the data from
+                // snapshot of our database.
+//               String hp=null;
+//               hp=snapshot.getValue(String.class);
+                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
 
+//                Metals m=(Metals)map.get("prices");
+//                Metals m=(Metals)snapshot.getValue();;
+//                System.out.println(map.get("prices").toString());
+//                System.out.println(m.toString());
+//                snapshot.getValue()
+//                    System.out.println(snapshot.getValue().toString());
+                for (String key : map.keySet()) {
+
+                    switch(key){
+                        case "silverSolapurOperator" : silverSolapurOperatorDb=map.get(key).toString();
+                            break;
+                        case "silverMumbaiOperator" : silverMumbaiOperatorDb=map.get(key).toString();
+                            break;
+                        case "silverHydrabadOperator" : silverHydrabadOperatorDb=map.get(key).toString();
+                            break;
+                        case "silverKolhapurOperator" : silverKolhapurOperatorDb=map.get(key).toString();
+                            break;
+                        case "goldSolapurOperator" : goldSolapurOperatorDb=map.get(key).toString();
+                            break;
+                        case "goldSolapur" : goldSolapurDb= Long.valueOf(map.get(key).toString());
+                            break;
+                        case "silverSolapur" : silverSolapurDb= Long.valueOf(map.get(key).toString());
+                            break;
+                        case "silverMumbai" : silverMumbaiDb= Long.valueOf(map.get(key).toString());
+                            break;
+                        case "silverHydrabad" : silverHydrabadDb= Long.valueOf(map.get(key).toString());
+                            break;
+                        case "silverKolhapur" : silverKolhapurDb= Long.valueOf(map.get(key).toString());
+                            break;
+                        default:break;
+                    }
+
+//
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // calling on cancelled method when we receive
+                // any error or we are not able to get the data.
+                Toast.makeText(HomeActivity.this, "Fail to get data.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 
 
 
@@ -274,13 +363,17 @@ public class HomeActivity extends AppCompatActivity {
 
 
             super.onPostExecute(aVoid);
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @SuppressLint("SetTextI18n")
-                @Override
-                public void run() {
+//            final Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                @SuppressLint("SetTextI18n")
+//                @Override
+//                public void run() {
                     try{
-
+                        System.out.println("############1"+silverKolhapurDb);
+                        System.out.println("############2"+silverHydrabadDb);
+                        System.out.println("############3"+silverMumbaiDb);
+                        System.out.println("############4"+silverSolapurDb);
+                        System.out.println("############5"+goldSolapurDb);
                         goldMcx = Math.round(getGoldData());
                         goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
 
@@ -325,19 +418,26 @@ public class HomeActivity extends AppCompatActivity {
                             silverKolhapurTextView.setText("Rs " + silverKolhapur.toString());
                             silverSolapurTextView.setText("Rs " + silverSolapur.toString());
 
+
+                            System.out.println("############6"+goldSolapurOperatorDb);
+                            System.out.println("############7"+silverHydrabadOperatorDb);
+                            System.out.println("############8"+silverHydrabadOperatorDb);
+                            System.out.println("############9"+silverMumbaiOperatorDb);
+                            System.out.println("############10"+silverSolapurOperatorDb);
+
                             System.out.println("Silver  set sucessfully");
 
                         } else {
                             silverMcxTextView.setText("No Value");
                         }
 
-                        handler.postDelayed(this,10000);
+//                        handler.postDelayed(this,10);
                     }catch(Exception ex) {
 
                         ex.printStackTrace();
                     }
-                }
-            }, 5000);
+//                }
+//            }, 100000);
 
 
 
