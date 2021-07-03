@@ -23,14 +23,14 @@
             android:id="@+id/livedottext"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Live"
+            android:text="@string/live"
             android:fontFamily="@font/cardo"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:textColor="#00FF00"
-            >
+            android:layout_marginEnd="5dp">
         </TextView>
     <TextView
         android:id="@+id/livedot"
@@ -140,6 +140,7 @@
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
                         android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
                         android:text=" Gold rate live"
                         android:textAppearance="?android:attr/textAppearanceLarge"
 
