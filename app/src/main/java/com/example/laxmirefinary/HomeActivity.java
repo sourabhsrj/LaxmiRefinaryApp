@@ -67,6 +67,8 @@ public class HomeActivity extends AppCompatActivity {
     TextView silverMumbaiTextView;
     TextView silverKolhapurTextView;
 
+    TextView liveDot;
+
 
     private FirebaseRecyclerOptions<Metals> Metals;
     FirebaseDatabase firebaseDatabase;
@@ -120,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
         silverHydrabadTextView = findViewById(R.id.silverhydrabad);
         silverMumbaiTextView =  findViewById(R.id.silvermumbai);
         silverKolhapurTextView =  findViewById(R.id.silverkolhapur);
-
+        liveDot = findViewById(R.id.livedot);
         //----End Declaration and initilization------
 
         //-----Fetch values
@@ -181,7 +183,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         }, 10000);*/
         //----End Set values
-
+        blink_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
+        liveDot.startAnimation(blink_anim);
         //-----------------------------DataBase Start----------------------------------------------------
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -386,8 +389,7 @@ public class HomeActivity extends AppCompatActivity {
 
                         goldMcxTextView =  findViewById(R.id.goldmcx);
 
-                        blink_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
-                        goldMcxTextView.startAnimation(blink_anim);
+
 
                         goldSolapurTextView =  findViewById(R.id.goldsolapur);
                         upperGoldSolapurTextView =  findViewById(R.id.uppergoldsolapur);
