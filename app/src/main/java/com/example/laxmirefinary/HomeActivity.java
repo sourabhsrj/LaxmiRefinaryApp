@@ -344,16 +344,48 @@ public class HomeActivity extends AppCompatActivity {
             try{
 
 
-
+            //get gold and set
                 goldMcx = Math.round(getGoldData());
-                goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
 
+                if(goldSolapurOperatorDb.equals("add")) {
+                    goldSolapur = Math.round(goldMcx + (goldMcx * 0.03) + goldSolapurDb);
+                }
+                else{
+                    goldSolapur = Math.round(goldMcx + (goldMcx * 0.03) - goldSolapurDb);
+                }
 
+                //get silver and set
                 silverMcx = Math.round(getSilverData());
-                silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
-                silverMumbai = silverSolapur - 500;
-                silverKolhapur = silverSolapur - 1100;
-                silverHydrabad = silverSolapur;
+
+                if(silverSolapurOperatorDb.equals("add")) {
+                    silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + silverSolapurDb);
+                }
+                else{
+                    silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) - silverSolapurDb);
+                }
+
+                if(silverMumbaiOperatorDb.equals("add"))
+                {
+                     silverMumbai = silverSolapur + silverMumbaiDb;
+                }
+                else{
+                    silverMumbai = silverSolapur - silverMumbaiDb;
+                }
+
+                if(silverKolhapurOperatorDb.equals("add"))
+                {
+                     silverKolhapur = silverSolapur + silverKolhapurDb;  }
+                else{
+                    silverKolhapur = silverSolapur - silverKolhapurDb;
+                    }
+
+                if(silverHydrabadOperatorDb.equals("add"))
+                {
+                    silverHydrabad = silverSolapur + silverHydrabadDb;
+                }
+                    else{
+                    silverHydrabad = silverSolapur - silverHydrabadDb;
+                }
             }catch(Exception ex) {
                 ex.printStackTrace();
             }
