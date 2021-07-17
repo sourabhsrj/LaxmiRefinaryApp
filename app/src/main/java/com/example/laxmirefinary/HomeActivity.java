@@ -192,7 +192,7 @@ public class HomeActivity extends AppCompatActivity {
         // reference for our database.
         databaseReference = firebaseDatabase.getReference("prices");
 
-      getDataFromDatabase();
+
 
 
 
@@ -343,6 +343,7 @@ public class HomeActivity extends AppCompatActivity {
 
             try{
 
+                getDataFromDatabase();
 
             //get gold and set
                 goldMcx = Math.round(getGoldData());
@@ -404,21 +405,23 @@ public class HomeActivity extends AppCompatActivity {
 //                @Override
 //                public void run() {
                     try{
-                        System.out.println("############1"+silverKolhapurDb);
+                    /*    System.out.println("############1"+silverKolhapurDb);
                         System.out.println("############2"+silverHydrabadDb);
                         System.out.println("############3"+silverMumbaiDb);
                         System.out.println("############4"+silverSolapurDb);
-                        System.out.println("############5"+goldSolapurDb);
-                        goldMcx = Math.round(getGoldData());
-                        goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
+                        System.out.println("############5"+goldSolapurDb);*/
 
+    /*                    goldMcx = Math.round(getGoldData());
+//                        goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
+//
+//
+//                        silverMcx = Math.round(getSilverData());
+//                        silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
+//                        silverMumbai = silverSolapur - 500;
+//                        silverKolhapur = silverSolapur - 1100;
+//                        silverHydrabad = silverSolapur;
 
-                        silverMcx = Math.round(getSilverData());
-                        silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
-                        silverMumbai = silverSolapur - 500;
-                        silverKolhapur = silverSolapur - 1100;
-                        silverHydrabad = silverSolapur;
-
+*/
                         goldMcxTextView =  findViewById(R.id.goldmcx);
 
 

@@ -86,7 +86,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="Gold\n1776.46\n13.15(0.75%)"
+                        android:text="Gold\nLoading\nLoading"
                         android:textAlignment="gravity"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/yellow"
@@ -102,7 +102,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="Silver\n25.942\n0.103(0.4%)"
+                        android:text="Silver\nLoading\nLoading"
                         android:textAlignment="gravity"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/silver"
@@ -128,7 +128,8 @@
                     android:layout_margin="1dp"
                     android:layout_weight="1"
                     android:background="#000000"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -179,7 +180,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -214,7 +215,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -280,13 +281,13 @@
                     <TextView
                         android:id="@+id/silvermcx"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -321,7 +322,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -356,7 +357,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -391,7 +392,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
@@ -426,7 +427,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="00.00"
+                        android:text="@string/loading"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
