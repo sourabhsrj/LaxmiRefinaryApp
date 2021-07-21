@@ -367,25 +367,25 @@ public class HomeActivity extends AppCompatActivity {
 
                 if(silverMumbaiOperatorDb.equals("add"))
                 {
-                     silverMumbai = silverSolapur + silverMumbaiDb;
+                     silverMumbai =  Math.round(silverMcx + (silverMcx * 0.03) + silverMumbaiDb);
                 }
                 else{
-                    silverMumbai = silverSolapur - silverMumbaiDb;
+                    silverMumbai = Math.round(silverMcx + (silverMcx * 0.03)  - silverMumbaiDb);
                 }
 
                 if(silverKolhapurOperatorDb.equals("add"))
                 {
-                     silverKolhapur = silverSolapur + silverKolhapurDb;  }
+                     silverKolhapur = Math.round(silverMcx + (silverMcx * 0.03)  + silverKolhapurDb);  }
                 else{
-                    silverKolhapur = silverSolapur - silverKolhapurDb;
+                    silverKolhapur = Math.round(silverMcx + (silverMcx * 0.03)  - silverKolhapurDb);
                     }
 
                 if(silverHydrabadOperatorDb.equals("add"))
                 {
-                    silverHydrabad = silverSolapur + silverHydrabadDb;
+                    silverHydrabad = Math.round(silverMcx + (silverMcx * 0.03)  + silverHydrabadDb);
                 }
                     else{
-                    silverHydrabad = silverSolapur - silverHydrabadDb;
+                    silverHydrabad = Math.round(silverMcx + (silverMcx * 0.03)  - silverHydrabadDb);
                 }
             }catch(Exception ex) {
                 ex.printStackTrace();
