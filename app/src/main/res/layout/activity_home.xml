@@ -328,40 +328,6 @@
                         android:textStyle="bold" />
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/white">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_column="0"
-                        android:layout_margin="1dp"
-                        android:background="@color/black"
-                        android:fontFamily="@font/cardo"
-                        android:gravity="center_vertical"
-                        android:text="Kolhapur"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/silver"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/silverkolhapur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_column="1"
-                        android:layout_margin="1dp"
-                        android:background="@color/black"
-                        android:fontFamily="@font/cardo"
-                        android:gravity="center"
-                        android:text="@string/loading"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#00FF00"
-                        android:textStyle="bold" />
-                </TableRow>
 
                 <TableRow
                     android:layout_width="fill_parent"
@@ -420,6 +386,40 @@
 
                     <TextView
                         android:id="@+id/silversoplapur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center"
+                        android:text="@string/loading"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center_vertical"
+                        android:text="Kolhapur"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/silver"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/silverkolhapur"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
