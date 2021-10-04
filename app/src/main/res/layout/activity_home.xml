@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="150dp"
             android:layout_marginBottom="100dp">
 
             <TableLayout
@@ -65,7 +65,7 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="150dp"
                 android:background="@color/white"
                 android:stretchColumns="0,1,2">
 
@@ -78,7 +78,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/uppergoldsolapur"
+                        android:id="@+id/uppergoldusd"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="0"
@@ -86,7 +86,7 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="Gold\nLoading\nLoading"
+                        android:text="Gold USD\nLoading"
                         android:textAlignment="gravity"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/yellow"
@@ -94,7 +94,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/uppersilversoplapur"
+                        android:id="@+id/upperusdinr"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -102,12 +102,27 @@
                         android:background="@color/black"
                         android:fontFamily="@font/cardo"
                         android:gravity="center"
-                        android:text="Silver\nLoading\nLoading"
+                        android:text="USD\nLoading"
                         android:textAlignment="gravity"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/silver"
+                        android:textColor="@color/red"
                         android:textSize="15sp"
                         android:textStyle="bold" />
+                    <TextView
+                    android:id="@+id/uppersilverusd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@color/black"
+                    android:fontFamily="@font/cardo"
+                    android:gravity="center"
+                    android:text="Silver USD\nLoading"
+                    android:textAlignment="gravity"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/silver"
+                        android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 </TableRow>
             </TableLayout>
@@ -208,6 +223,108 @@
 
                     <TextView
                         android:id="@+id/goldsolapur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center"
+                        android:text="@string/loading"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center_vertical"
+                        android:text="Mumbai 99.99"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/yellow"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/goldmumbai99"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center"
+                        android:text="@string/loading"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center_vertical"
+                        android:text="Mumbai 99.50"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/yellow"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/goldmumbai95"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center"
+                        android:text="@string/loading"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center_vertical"
+                        android:text="Solapur 99.50"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/yellow"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/goldsolapur95"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_column="1"
@@ -364,40 +481,7 @@
                         android:textStyle="bold" />
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    android:background="@color/white">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_column="0"
-                        android:layout_margin="1dp"
-                        android:background="@color/black"
-                        android:fontFamily="@font/cardo"
-                        android:gravity="center_vertical"
-                        android:text="Solapur"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/silver"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/silversoplapur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_column="1"
-                        android:layout_margin="1dp"
-                        android:background="@color/black"
-                        android:fontFamily="@font/cardo"
-                        android:gravity="center"
-                        android:text="@string/loading"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#00FF00"
-                        android:textStyle="bold" />
-                </TableRow>
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
@@ -432,7 +516,73 @@
                         android:textColor="#00FF00"
                         android:textStyle="bold" />
                 </TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/white">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center_vertical"
+                        android:text="Solapur 99.00"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/silver"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/silversoplapur9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/cardo"
+                        android:gravity="center"
+                        android:text="@string/loading"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="#00FF00"
+                        android:textStyle="bold" />
+                </TableRow><TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="0"
+                    android:layout_margin="1dp"
+                    android:background="@color/black"
+                    android:fontFamily="@font/cardo"
+                    android:gravity="center_vertical"
+                    android:text="Solapur 99.99"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/silver"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/silversoplapur99"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_margin="1dp"
+                    android:background="@color/black"
+                    android:fontFamily="@font/cardo"
+                    android:gravity="center"
+                    android:text="@string/loading"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#00FF00"
+                    android:textStyle="bold" />
+            </TableRow>
             </TableLayout>
 
 
