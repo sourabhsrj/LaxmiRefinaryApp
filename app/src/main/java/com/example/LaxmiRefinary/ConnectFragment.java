@@ -1,4 +1,4 @@
-package com.example.laxmirefinary;
+package com.example.LaxmiRefinary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

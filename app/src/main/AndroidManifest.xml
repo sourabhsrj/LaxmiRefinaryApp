@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomNavApp">
-        <activity android:name="com.example.laxmirefinary.HomeActivity"></activity>
-        <activity android:name="com.example.laxmirefinary.ConnectActivity" />
+        <activity android:name="com.example.LaxmiRefinary.HomeActivity"></activity>
+        <activity android:name="com.example.LaxmiRefinary.ConnectActivity" />
         <activity
-            android:name="com.example.laxmirefinary.SplashSreen"
+            android:name="com.example.LaxmiRefinary.SplashSreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.laxmirefinary.MainActivity"
+            android:name="com.example.LaxmiRefinary.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 

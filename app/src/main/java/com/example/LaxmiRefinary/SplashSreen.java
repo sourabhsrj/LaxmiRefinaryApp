@@ -1,4 +1,4 @@
-package com.example.laxmirefinary;
+package com.example.LaxmiRefinary;
 
 import android.content.Intent;
 import android.os.Bundle;

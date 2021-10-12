@@ -1,4 +1,4 @@
-package com.example.laxmirefinary;
+package com.example.LaxmiRefinary;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -582,7 +582,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
 
                         if (upperUsdInr!= null) {
-                            upperUsdInrString = "Usd" + "\n" + upperUsdInr.toString() + "";
+                            upperUsdInrString = "USD" + "\n" + upperUsdInr.toString() + "";
                             upperUsdInrTextView.setText(upperUsdInrString);
                         } else {
                             upperUsdInrTextView.setText("No Value");
