@@ -1,8 +1,11 @@
 package com.example.LaxmiRefinary;
 
+import static android.view.View.*;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bottomnavapp.R;
@@ -33,6 +37,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -141,13 +146,15 @@ public class HomeActivity extends AppCompatActivity {
     private TimerTask mTimerTask;
 
     //------------------------------------
+    @SuppressLint("NonConstantResourceId")
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+                SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         //----Declaration and initilization------
@@ -181,64 +188,10 @@ public class HomeActivity extends AppCompatActivity {
         liveDot = findViewById(R.id.livedot);
         //----End Declaration and initilization------
 
-        //-----Fetch values
-
-
-/*        handler.postDelayed(runnable = new Runnable() {
-            public void run() {
-                handler.postDelayed(runnable, 10000);
-                *//*Toast.makeText(HomeActivity.this, "This method is run every 10 seconds",
-                        Toast.LENGTH_SHORT).show();*//*
-
-        try{
 
 
 
-            goldMcx = Math.round(getGoldData());
-            goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
 
-
-            silverMcx = Math.round(getSilverData());
-            silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
-            silverMumbai = silverSolapur - 500;
-            silverKolhapur = silverSolapur - 1100;
-            silverHydrabad = silverSolapur;
-        }catch(Exception ex) {
-            ex.printStackTrace();
-        }
-
-
-        //-----End Fetch values
-
-
-        //----Set values
-
-        if (goldMcx != null) {
-            goldMcxTextView.setText("Rs " + goldMcx.toString());
-            goldSolapurTextView.setText("Rs " + goldSolapur.toString());
-            upperGoldUsd = "Gold" + "\n" + goldSolapur.toString() + "\n" + "13.15(0.75%)";
-            upperGoldUsdTextView.setText(upperGoldUsd);
-        } else {
-            goldMcxTextView.setText("No Value");
-        }
-        if (silverMcx != null) {
-            String upperSilverUsd = "Silver" + "\n" + silverSolapur.toString() + "\n" + "0.103(0.4%)";
-            upperSilverUsdTextView.setText(upperSilverUsd);
-            silverMcxTextView.setText("Rs " + silverMcx.toString());
-            silverHydrabadTextView.setText("Rs " + silverHydrabad.toString());
-            silverMumbaiTextView.setText("Rs " + silverMumbai.toString());
-            silverKolhapurTextView.setText("Rs " + silverKolhapur.toString());
-            silverSolapurTextView.setText("Rs " + silverSolapur.toString());
-
-        } else {
-            silverMcxTextView.setText("No Value");
-        }
-
-
-
-            }
-        }, 10000);*/
-        //----End Set values
         blink_anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink);
         liveDot.startAnimation(blink_anim);
         //-----------------------------DataBase Start----------------------------------------------------
@@ -258,7 +211,6 @@ public class HomeActivity extends AppCompatActivity {
         try {
 
 
-//            final int intervalTime = 10000; // 10 sec
             mTimer = new Timer();
             mTimerTask = new TimerTask() {
                 @Override
@@ -277,99 +229,106 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        break;
-                    case R.id.navigation_connect:
-                        Intent a = new Intent(HomeActivity.this,ConnectActivity.class);
-                        startActivity(a);
-                        overridePendingTransition(0, 0);
-                        break;
+        navigation.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    break;
+                case R.id.navigation_connect:
+                    Intent a = new Intent(HomeActivity.this,ConnectActivity.class);
+                    startActivity(a);
+                    overridePendingTransition(0, 0);
+                    break;
 
-                }
-                return false;
             }
+            return false;
         });
 
     }
 
     private void getDataFromDatabase() {
-//        final Metals[] value = {null};
-//        final com.example.laxmirefinary.Metals[] valuess = {null};
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // this method is call to get the realtime
-                // updates in the data.
-                // this method is called when the data is
-                // changed in our Firebase console.
-                // below line is for getting the data from
-                // snapshot of our database.
-//               String hp=null;
-//               hp=snapshot.getValue(String.class);
-                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
 
-//                Metals m=(Metals)map.get("prices");
-//                Metals m=(Metals)snapshot.getValue();;
-//                System.out.println(map.get("prices").toString());
-//                System.out.println(m.toString());
-//                snapshot.getValue()
-//                    System.out.println(snapshot.getValue().toString());
-                for (String key : map.keySet()) {
+                Map<String, Object> map;
+                map = (Map<String, Object>) snapshot.getValue();
 
-                    switch(key){
-                        case "goldSolapur" : goldSolapurDb= Long.valueOf(map.get(key).toString());
+
+        try {
+                for (String key : Objects.requireNonNull(map).keySet()) {
+
+                    switch (key) {
+                        case "goldSolapur":
+                            goldSolapurDb = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "goldMumbai95" : goldMumbai95Db= Long.valueOf(map.get(key).toString());
+                        case "goldMumbai95":
+                            goldMumbai95Db = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "goldMumbai99" : goldMumbai99Db= Long.valueOf(map.get(key).toString());
+                        case "goldMumbai99":
+                            goldMumbai99Db = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "goldSolapur95" : goldSolapur95Db= Long.valueOf(map.get(key).toString());
+                        case "goldSolapur95":
+                            goldSolapur95Db = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
 //                        case "silverSolapur" : silverSolapurDb= Long.valueOf(map.get(key).toString());
 //                            break;
-                        case "silverMumbai" : silverMumbaiDb= Long.valueOf(map.get(key).toString());
+                        case "silverMumbai":
+                            silverMumbaiDb = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "silverHydrabad" : silverHydrabadDb= Long.valueOf(map.get(key).toString());
+                        case "silverHydrabad":
+                            silverHydrabadDb = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "silverKolhapur" : silverKolhapurDb= Long.valueOf(map.get(key).toString());
+                        case "silverKolhapur":
+                            silverKolhapurDb = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "silverSolapur9" : silverSolapur9Db= Long.valueOf(map.get(key).toString());
+                        case "silverSolapur9":
+                            silverSolapur9Db = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "silverSolapur99" : silverSolapur99Db= Long.valueOf(map.get(key).toString());
+                        case "silverSolapur99":
+                            silverSolapur99Db = Long.valueOf(Objects.requireNonNull(map.get(key)).toString());
                             break;
-                        case "goldMumbai95Operator" : goldMumbai95OperatorDb=map.get(key).toString();
+                        case "goldMumbai95Operator":
+                            goldMumbai95OperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "goldMumbai99Operator" : goldMumbai99OperatorDb=map.get(key).toString();
+                        case "goldMumbai99Operator":
+                            goldMumbai99OperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "goldSolapur95Operator" : goldSolapur95OperatorDb=map.get(key).toString();
+                        case "goldSolapur95Operator":
+                            goldSolapur95OperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "goldSolapurOperator" : goldSolapurOperatorDb=map.get(key).toString();
+                        case "goldSolapurOperator":
+                            goldSolapurOperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "silverSolapur9Operator" : silverSolapur9OperatorDb=map.get(key).toString();
+                        case "silverSolapur9Operator":
+                            silverSolapur9OperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "silverSolapur99Operator" : silverSolapur99OperatorDb=map.get(key).toString();
+                        case "silverSolapur99Operator":
+                            silverSolapur99OperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
 //                        case "silverSolapurOperator" : silverSolapurOperatorDb=map.get(key).toString();
 //                            break;
-                        case "silverMumbaiOperator" : silverMumbaiOperatorDb=map.get(key).toString();
+                        case "silverMumbaiOperator":
+                            silverMumbaiOperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "silverHydrabadOperator" : silverHydrabadOperatorDb=map.get(key).toString();
+                        case "silverHydrabadOperator":
+                            silverHydrabadOperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        case "silverKolhapurOperator" : silverKolhapurOperatorDb=map.get(key).toString();
+                        case "silverKolhapurOperator":
+                            silverKolhapurOperatorDb = Objects.requireNonNull(map.get(key)).toString();
                             break;
-                        default:break;
+                        default:
+                            break;
                     }
 
-//
                 }
+
+                }catch (Exception ex){
+                ex.printStackTrace();
+        }
 
 
 
@@ -390,42 +349,26 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    //TODO
     @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Void, Integer, String> {
 
-        public Content() {
-        }
 
         @Override
         public void onPreExecute() {
             super.onPreExecute();
-            //            progressDialog = new ProgressDialog(getActivity());
-            //            progressDialog.setMessage("Loading , Please wait...");
-            //            progressDialog.setIndeterminate(true);
-            //            progressDialog.setCancelable(false);
-            //            progressDialog.setCanceledOnTouchOutside(false);
-            //            progressDialog.show();
-
-
         }
 
 
         @Override
         protected String doInBackground(Void... voids) {
 
-
-
-
             try{
 
                 getDataFromDatabase();
 
-            //get gold and set
                 goldMcx = Math.round(getGoldData());
                 silverMcx = Math.round(getSilverData());
                 upperUsdInr=getUsdInrData();
-                //TODO
                 upperSilverUsd=getSilverUsdData();
                 upperGoldUsd=getGoldUsdData();
 
@@ -437,15 +380,7 @@ public class HomeActivity extends AppCompatActivity {
                     goldSolapur = Math.round(goldMcx + (goldMcx * 0.03) - goldSolapurDb);
                 }
 
-                //get silver and set
-//                silverMcx = Math.round(getSilverData());
 
-                /*if(silverSolapurOperatorDb.equals("add")) {
-                    silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + silverSolapurDb);
-                }
-                else{
-                    silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) - silverSolapurDb);
-                }*/
 
                 if(silverMumbaiOperatorDb.equals("add"))
                 {
@@ -513,34 +448,15 @@ public class HomeActivity extends AppCompatActivity {
             return null;
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(String aVoid) {
 
 
             super.onPostExecute(aVoid);
-//            final Handler handler = new Handler();
-//            handler.postDelayed(new Runnable() {
-//                @SuppressLint("SetTextI18n")
-//                @Override
-//                public void run() {
+
                     try{
-                    /*    System.out.println("############1"+silverKolhapurDb);
-                        System.out.println("############2"+silverHydrabadDb);
-                        System.out.println("############3"+silverMumbaiDb);
-                        System.out.println("############4"+silverSolapurDb);
-                        System.out.println("############5"+goldSolapurDb);*/
 
-    /*                    goldMcx = Math.round(getGoldData());
-//                        goldSolapur = Math.round(goldMcx + (goldMcx * 0.03));
-//
-//
-//                        silverMcx = Math.round(getSilverData());
-//                        silverSolapur = Math.round(silverMcx + (silverMcx * 0.03) + 100);
-//                        silverMumbai = silverSolapur - 500;
-//                        silverKolhapur = silverSolapur - 1100;
-//                        silverHydrabad = silverSolapur;
-
-*/
                         goldMcxTextView =  findViewById(R.id.goldmcx);
 
 
@@ -556,7 +472,6 @@ public class HomeActivity extends AppCompatActivity {
                         upperGoldUsdTextView =  findViewById(R.id.uppergoldusd);
 
                         silverMcxTextView =  findViewById(R.id.silvermcx);
-//                        silverSolapurTextView =  findViewById(R.id.silversoplapur);
 
                         upperSilverUsdTextView = findViewById(R.id.uppersilverusd);
                         silverHydrabadTextView = findViewById(R.id.silverhydrabad);
@@ -569,75 +484,58 @@ public class HomeActivity extends AppCompatActivity {
                         upperSilverUsdTextView=findViewById(R.id.uppersilverusd);
 
                         if (upperGoldUsd != null) {
-                            upperGoldUsdString = "Gold" + "\n" + upperGoldUsd.toString() + "";
+                            upperGoldUsdString = "Gold" + "\n" + upperGoldUsd + "";
                             upperGoldUsdTextView.setText(upperGoldUsdString);
                         } else {
                             upperGoldUsdTextView.setText("No Value");
                         }
 
                         if (upperSilverUsd!= null) {
-                            upperSilverUsdString = "Silver" + "\n" + upperSilverUsd.toString() + "";
+                            upperSilverUsdString = "Silver" + "\n" + upperSilverUsd + "";
                             upperSilverUsdTextView.setText(upperSilverUsdString);
                         } else {
                             upperGoldUsdTextView.setText("No Value");
                         }
 
                         if (upperUsdInr!= null) {
-                            upperUsdInrString = "USD" + "\n" + upperUsdInr.toString() + "";
+                            upperUsdInrString = "USD" + "\n" + upperUsdInr + "";
                             upperUsdInrTextView.setText(upperUsdInrString);
                         } else {
                             upperUsdInrTextView.setText("No Value");
                         }
 
                         if (goldMcx != null) {
-                            //TODO
-                            goldMcxTextView.setText("Rs " + goldMcx.toString());
-                            goldSolapurTextView.setText("Rs " + goldSolapur.toString());
+                            goldMcxTextView.setText("Rs " + goldMcx);
+                            goldSolapurTextView.setText("Rs " + goldSolapur);
 
-                            goldMumbai99TextView.setText("Rs " + goldMumbai99.toString());
-                            goldMumbai95TextView.setText("Rs " + goldMumbai95.toString());
-                            goldSolapur95TextView.setText("Rs " + goldSolapur95.toString());
+                            goldMumbai99TextView.setText("Rs " + goldMumbai99);
+                            goldMumbai95TextView.setText("Rs " + goldMumbai95);
+                            goldSolapur95TextView.setText("Rs " + goldSolapur95);
 
 
-//                            upperGoldUsd = "Gold" + "\n" + goldSolapur.toString() + "";
-//                            upperGoldUsdTextView.setText(upperGoldUsd);
-//                            System.out.println("Gold set sucessfully");
                         } else {
                             goldMcxTextView.setText("No Value");
                         }
                         if (silverMcx != null) {
-                            /*String upperSilverUsd = "Silver" + "\n" + silverSolapur.toString()  + "";
-                            upperSilverUsdTextView.setText(upperSilverUsd);*/
-                            silverMcxTextView.setText("Rs " + silverMcx.toString());
-                            silverHydrabadTextView.setText("Rs " + silverHydrabad.toString());
-                            silverMumbaiTextView.setText("Rs " + silverMumbai.toString());
-                            silverKolhapurTextView.setText("Rs " + silverKolhapur.toString());
-//                            silverSolapurTextView.setText("Rs " + silverSolapur.toString());
+                            silverMcxTextView.setText("Rs " + silverMcx);
+                            silverHydrabadTextView.setText("Rs " + silverHydrabad);
+                            silverMumbaiTextView.setText("Rs " + silverMumbai);
+                            silverKolhapurTextView.setText("Rs " + silverKolhapur);
 
 
-                            silverSolapur9TextView.setText("Rs " + silverSolapur9.toString());
-                            silverSolapur99TextView.setText("Rs " + silverSolapur99.toString());
+                            silverSolapur9TextView.setText("Rs " + silverSolapur9);
+                            silverSolapur99TextView.setText("Rs " + silverSolapur99);
 
 
-//                            System.out.println("############6"+goldSolapurOperatorDb);
-//                            System.out.println("############7"+silverHydrabadOperatorDb);
-//                            System.out.println("############8"+silverHydrabadOperatorDb);
-//                            System.out.println("############9"+silverMumbaiOperatorDb);
-//                            System.out.println("############10"+silverSolapurOperatorDb);
-
-//                            System.out.println("Silver  set sucessfully");
 
                         } else {
                             silverMcxTextView.setText("No Value");
                         }
 
-//                        handler.postDelayed(this,10);
                     }catch(Exception ex) {
 
                         ex.printStackTrace();
                     }
-//                }
-//            }, 100000);
 
 
 
@@ -794,13 +692,16 @@ money control code
         try {
             docGoldUsdUrl = Jsoup.connect(GOLDUSDURL).get();
 
-            Elements tablesDocGoldUsdUrl=docGoldUsdUrl.getElementsByClass("instrument-price_last__KQzyA"); //--for gold and silver
-            Element tableDocGoldUsdUrl=tablesDocGoldUsdUrl.get(0);
+            Elements span=docGoldUsdUrl.select("span.text-2xl");
 
-            String tdr = tableDocGoldUsdUrl.text();
+            System.out.println(span.text());
+
+            String tdr = span.text();
+
             tdr=  tdr.replace(",","");
 
             price=Double.valueOf(tdr);
+
 //            System.out.println(tdr);
 
 
@@ -870,17 +771,7 @@ money control code
         return price;
     }
 
-/*    private boolean isDeviceOnline() {
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return (networkInfo != null && networkInfo.isConnected());
-    }*/
 
-/*    private boolean isOnline() {
-        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return (networkInfo != null && networkInfo.isConnected());
-    }*/
 
 
 
