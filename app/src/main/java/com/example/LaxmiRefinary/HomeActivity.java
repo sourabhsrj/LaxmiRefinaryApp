@@ -390,7 +390,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
+    //TODO
     @SuppressLint("StaticFieldLeak")
     private class Content extends AsyncTask<Void, Integer, String> {
 
@@ -425,6 +425,7 @@ public class HomeActivity extends AppCompatActivity {
                 goldMcx = Math.round(getGoldData());
                 silverMcx = Math.round(getSilverData());
                 upperUsdInr=getUsdInrData();
+                //TODO
                 upperSilverUsd=getSilverUsdData();
                 upperGoldUsd=getGoldUsdData();
 
@@ -589,6 +590,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
 
                         if (goldMcx != null) {
+                            //TODO
                             goldMcxTextView.setText("Rs " + goldMcx.toString());
                             goldSolapurTextView.setText("Rs " + goldSolapur.toString());
 
@@ -822,27 +824,22 @@ money control code
         try {
             docSilverUsdUrl = Jsoup.connect(SILVERUSDURL).get();
 
+            Elements span=docSilverUsdUrl.select("span.text-2xl");
 
-            Elements tablesdocSilverUsdUrl=docSilverUsdUrl.getElementsByClass("instrument-price_last__KQzyA"); //--for gold and silver
-            Element tabledocSilverUsdUrl=tablesdocSilverUsdUrl.get(0);
+            System.out.println(span.text());
 
-            String tdr = tabledocSilverUsdUrl.text();
 
-//            System.out.println(tdr);
-            tdr=  tdr.replace(",","");
+            price=Double.valueOf(span.text());
 
-            price=Double.valueOf(tdr);
+            System.out.println(price);
 
-           /* Pattern regex = Pattern.compile("(\\d+(?:\\.\\d+)?)");
-            Matcher matcher = regex.matcher(tdr);
-            while (matcher.find()) {
-                price = Double.parseDouble(Objects.requireNonNull(matcher.group(1)));
-            }*/
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+
         return price;
+
     }    private Double getUsdInrData() {
 
 
