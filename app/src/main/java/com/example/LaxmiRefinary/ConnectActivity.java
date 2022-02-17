@@ -1,14 +1,17 @@
 package com.example.LaxmiRefinary;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bottomnavapp.R;
@@ -16,28 +19,39 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ConnectActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect);
 
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                            View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent a = new Intent(ConnectActivity.this,HomeActivity.class);
-                        startActivity(a);
+                        Intent home = new Intent(ConnectActivity.this,HomeActivity.class);
+                        startActivity(home);
                         overridePendingTransition(0, 0);
                         break;
+
+                    case R.id.navigation_ads:
+                        Intent ads = new Intent(ConnectActivity.this,Ads.class);
+                        startActivity(ads);
+                        overridePendingTransition(0, 0);
+                        break;
+
                     case R.id.navigation_connect:
                         break;
 
