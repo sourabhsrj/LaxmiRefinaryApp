@@ -22,31 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        openFragment(HomeFragment.newInstance("", ""));
+
     }
 
 
 
-    public void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-//        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-    @SuppressLint("NonConstantResourceId")
-   final BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-            item -> {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        openFragment(HomeFragment.newInstance("", ""));
-                        return true;
-                    case R.id.navigation_connect:
-                        openFragment(ConnectFragment.newInstance("", ""));
-                        return true;
-                }
-                return false;
-            };
 
     public void calling(View view) {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
