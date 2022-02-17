@@ -14,12 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BottomNavApp">
-        <activity android:name="com.example.LaxmiRefinary.HomeActivity"></activity>
+        <activity android:name="com.example.LaxmiRefinary.HomeActivity" />
+        <activity android:name="com.example.LaxmiRefinary.Ads" />
         <activity android:name="com.example.LaxmiRefinary.ConnectActivity" />
         <activity
             android:name="com.example.LaxmiRefinary.SplashSreen"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +31,7 @@
         <activity
             android:name="com.example.LaxmiRefinary.MainActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
 
         <meta-data
             android:name="preloaded_fonts"
