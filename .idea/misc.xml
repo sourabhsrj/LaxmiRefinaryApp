@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/activity_home.xml" value="0.18" />
+        <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/activity_ads.xml" value="0.4707259953161593" />
+        <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/activity_connect.xml" value="0.4707259953161593" />
+        <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/activity_home.xml" value="0.5" />
         <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/activity_main.xml" value="0.10182370820668693" />
+        <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/layout/video_view.xml" value="0.4707259953161593" />
         <entry key="..\:/Users/Sourabh/AndroidStudioProjects/LaxmiRefinaryApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1765625" />
       </map>
     </option>
