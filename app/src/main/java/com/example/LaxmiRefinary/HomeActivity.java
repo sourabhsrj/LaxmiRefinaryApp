@@ -237,9 +237,14 @@ public class HomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     break;
+                case R.id.navigation_ads:
+                    Intent ads = new Intent(HomeActivity.this,Ads.class);
+                    startActivity(ads);
+                    overridePendingTransition(0, 0);
+                    break;
                 case R.id.navigation_connect:
-                    Intent a = new Intent(HomeActivity.this,ConnectActivity.class);
-                    startActivity(a);
+                    Intent connect = new Intent(HomeActivity.this,ConnectActivity.class);
+                    startActivity(connect);
                     overridePendingTransition(0, 0);
                     break;
 
