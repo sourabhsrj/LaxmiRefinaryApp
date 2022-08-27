@@ -41,17 +41,18 @@
         android:scaleType="centerInside"
         tools:ignore="OnClick"
         android:contentDescription="@string/todo" />
+
     <TextView
         android:id="@+id/addrtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/solapur_413001"
-        android:fontFamily="@font/cardo"
-        android:clickable="false"
-        android:textColor="@color/new2"
-        android:layout_marginTop="140dp"
         android:layout_marginLeft="100dp"
-        android:textSize="20sp"/>
+        android:layout_marginTop="130dp"
+        android:clickable="false"
+        android:fontFamily="@font/cardo"
+        android:text="418 east mangalwar peth saraf bazar, near lic office, Solapur, Maharashtra -413002"
+        android:textColor="@color/new2"
+        android:textSize="20sp" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"

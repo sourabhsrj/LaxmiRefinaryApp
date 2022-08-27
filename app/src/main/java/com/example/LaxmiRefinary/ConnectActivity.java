@@ -85,7 +85,7 @@ public class ConnectActivity extends AppCompatActivity {
 
     public void openWhatsapp(View view) {
         try {
-            String text = "Hello";
+            String text = "Hello....From Laxmi Refinary App";
             String toNumber = "917775078124";
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber +"&text="+text));
@@ -148,7 +148,7 @@ public class ConnectActivity extends AppCompatActivity {
     }
 
     public void openMap(View view) {
-        Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/place/Solapur,+Maharashtra/@17.6614569,75.8485768,12z/data=!3m1!4b1!4m5!3m4!1s0x3bc5d082b54ac5d5:0x3c719de6c83710d0!8m2!3d17.6599188!4d75.9063906");
+        Uri gmmIntentUri = Uri.parse("https://goo.gl/maps/2S6KTRNywBeiNPSt7");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
